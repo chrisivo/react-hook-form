@@ -248,6 +248,23 @@ export type UseFormSetFocus<TFieldValues extends FieldValues> = <
   options?: SetFocusOptions,
 ) => void;
 
+/**
+ * Gets whether a registered field has focus. You can start to invoke this method after all fields are mounted to the DOM.
+ *
+ * @remarks
+ * [API](https://react-hook-form.com/docs/useform/setfocus) • [Demo](https://codesandbox.io/s/setfocus-rolus)
+ *
+ * @param name - the path name to the form field value.
+ *
+ * TODO: prepare example
+ * ```
+ */
+export type UseFormIsFocused<TFieldValues extends FieldValues> = <
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>(
+  name: TFieldName,
+) => boolean;
+
 export type UseFormGetValues<TFieldValues extends FieldValues> = {
   /**
    * Get the entire form values when no argument is supplied to this function.
@@ -812,6 +829,7 @@ export type UseFormReturn<
   control: Control<TFieldValues, TContext>;
   register: UseFormRegister<TFieldValues>;
   setFocus: UseFormSetFocus<TFieldValues>;
+  isFocused: UseFormIsFocused<TFieldValues>;
 };
 
 export type UseFormStateProps<TFieldValues extends FieldValues> = Partial<{
